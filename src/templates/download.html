@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content_base_body %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="yt_link">Link:</label>
+        <input type="text" name="yt_link" id="yt_link" placeholder="https://www.youtube.com/watch?v=tXO2QtjixaM">
+        <input type="SUBMIT" name="download" value="Download">
+    </form>
+
+{% endblock content_base_body %}

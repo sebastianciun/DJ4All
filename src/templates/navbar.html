@@ -1,0 +1,20 @@
+<nav>
+    <ul class="sidebar-nav">
+        <ul><button><a href="{%url 'home' %}">Home</a></button></ul>
+        <br>
+        
+        {% if request.user.is_authenticated %}
+            <ul><button><a href="">{{request.user}}</a></button></ul>
+            <br>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+            <ul><button><a href="{% url 'logout' %}">Disconnect</a></button></ul>
+            <br>
+        {% else %}
+            <ul><button><a href="{% url 'login' %}">Login</a></button></ul>
+            <br>
+            <ul><button><a href="{% url 'register' %}">Register</a></button></ul>
+        {% endif %}
+    </ul>
+
+</nav>
