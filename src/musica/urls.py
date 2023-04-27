@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 from home.views import home_view, login_view, register_view, logout_user
-from YouTubeConverter.views import download_view
+from YouTubeConverter.views import download_view, show_directory
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +27,5 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('register/', register_view, name='register'),
     path('download/', download_view, name="download"),
+    path("folders/", show_directory, name="show_directory")
 ]

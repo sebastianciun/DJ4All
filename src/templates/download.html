@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content_base_body %}
-
+    <script src = "/static/javascript/navigate_folder.js"></script>
+    <ul id="folders">
+    </ul>
     <form action="" method="POST">
         {% csrf_token %}
         <label for="yt_link">Link:</label>

@@ -1,8 +1,11 @@
+import json
 from django.shortcuts import render
 from pytube import YouTube
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import tempfile
 import os
+from musica.settings import MUSIC_PATH
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -19,3 +22,20 @@ def download_view(request):
             return response
         
     return render(request, "download.html", {})
+
+@csrf_exempt
+def show_directory(request):
+    if(request.method == 'POST'):
+        path = request.body
+        path = path.decode()
+        path = path[1:-1]
+        print(path)
+        directory_array = []
+        for item in os.listdir(path):
+            fullpath = os.path.join(path, item)
+            if os.path.isdir(fullpath):
+                directory_array.append(item)
+        
+        return HttpResponse(json.dumps(directory_array))
+    return HttpResponse("Salut")
+
