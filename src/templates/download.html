@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content_base_body %}
-    <script src = "/static/javascript/navigate_folder.js"></script>
+    <script src = "/static/javascript/navigate_folder.js">
+        
+    </script>
+    <script>
+        var MUSIC_PATH = "{{MUSIC_PATH}}";
+        var curr_path = MUSIC_PATH;
+    </script>
+    
     <ul id="folders">
     </ul>
     <form action="" method="POST">
         {% csrf_token %}
         <label for="yt_link">Link:</label>
-        <input type="text" name="yt_link" id="yt_link" placeholder="https://www.youtube.com/watch?v=tXO2QtjixaM">
-        <input type="SUBMIT" name="download" value="Download">
+        <input type="text" name="yt_link" id="yt_link" placeholder="https://www.youtube.com/">
+        <input type="button" onclick=download_song() name="download" value="Download">
     </form>
 
 {% endblock content_base_body %}

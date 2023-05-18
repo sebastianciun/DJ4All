@@ -7,6 +7,7 @@ from .forms import CreateUserForm
 
 # Create your views here. 
 
+@authenticated_user
 def home_view(request):
     return render(request, "home.html", {})
 

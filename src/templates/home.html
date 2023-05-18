@@ -1,7 +1,17 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content_base_body %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css'%}">
+    {% if request.user.is_authenticated %}  
+        <div id="sidebar-wrapper">
+            {% include "navbar.html" %}
+        </div>
+        <div class="message">
+            <p>Hello, {{request.user}}!</p>
+        </div>
 
-    <h3>Hello</h3>
+    {% else %}
+
+    {% endif %}
 
 {% endblock content_base_body %}

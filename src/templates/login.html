@@ -1,25 +1,36 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content_base_body %}
 
-    <h1>Login</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css'%}">
+<div class="home">
+    <div class="welcome">
+        <h1>Welcome!</h1>
+    </div>
+    <div class="center">
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <p>
-            <label for="id_username">Username</label>
-            <input type="text" name="username" maxlength="150" autofocus required id="id_username">
+        <h1>Login</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
 
-        </p>
-        <p>
-            <label for="id_password">Password</label>
-            <input type="password" name="password" required id="id_password">
-        </p>
-        <input type="SUBMIT" name="Login User" value="Login">
-        {% for message in messages %}
-            <p>{{message}}</p>
-        {% endfor %}
-    </form>
+            <div class="textField">
+                <input type="text" name="username" maxlength="150" autofocus required id="id_username">
+                <span></span>
+                <label for="id_username">Username</label>
+            </div>
+
+            <div class="textField">
+                <input type="password" name="password" required id="id_password">
+                <span></span>
+                <label for="id_password">Password</label>
+            </div>
+            <input type="SUBMIT" name="Login User" value="Login">
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        </form>
+    </div>
+</div>
 
 
 {% endblock content_base_body %}
