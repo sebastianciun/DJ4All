@@ -1,21 +1,35 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content_base_body %}
-    <script src = "/static/javascript/navigate_folder.js">
+{% include "navbar.html" %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/download.css'%}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<script src="/static/javascript/navigate_folder.js"></script>
         
-    </script>
-    <script>
-        var MUSIC_PATH = "{{MUSIC_PATH}}";
-        var curr_path = MUSIC_PATH;
-    </script>
-    
-    <ul id="folders">
-    </ul>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <label for="yt_link">Link:</label>
-        <input type="text" name="yt_link" id="yt_link" placeholder="https://www.youtube.com/">
-        <input type="button" onclick=download_song() name="download" value="Download">
-    </form>
+<script src="https://kit.fontawesome.com/650a8f9001.js" crossorigin="anonymous"></script>
+
+<script>
+    var MUSIC_PATH = "{{MUSIC_PATH}}";
+    var curr_path = MUSIC_PATH;
+</script>
+<div id="container">
+    <div class="left">
+        <input type="button" class="delete_button" onclick=delete_song() name="delete" value="Delete">
+        <ul id="folders"></ul>
+    </div>
+    <div class="right">
+        <form id="download" action="" method="POST">
+            {% csrf_token %}
+            <input type="text" name="yt_link" class="yt_link" id="yt_link" placeholder="https://www.youtube.com">
+            <br>
+            <br>
+            <input type="button" class="download_btn" onclick=download_song() name="download" value="Download">
+        </form>
+    </div>
+</div>
 
 {% endblock content_base_body %}
