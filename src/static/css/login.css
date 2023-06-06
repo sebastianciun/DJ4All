@@ -106,3 +106,7 @@ input[type="SUBMIT"]{
 input[type="SUBMIT"]:hover{
     background-color: #1b6da3;
 }
+
+input[type="SUBMIT"]:active{
+    transform: scale(0.96);
+}

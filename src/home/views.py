@@ -23,7 +23,7 @@ def login_view(request):
             login(request, user)
             return redirect("home")
         else:
-            messages.info(request, "Username sau Parola incorecta")
+            messages.info(request, "Username or Password is incorrect")
     context = {
         
     }

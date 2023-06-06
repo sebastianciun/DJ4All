@@ -2,12 +2,18 @@
 {% load static %}
 {% block content_base_body %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css'%}">
+<script>
+    function refresh_home_page(){
+        location.reload();
+    }
+</script>
     {% if request.user.is_authenticated %}  
         <div id="sidebar-wrapper">
             {% include "navbar.html" %}
         </div>
         <div class="message">
-            <p>Hello, {{request.user}}!</p>
+            <p>Welcome to DJ4All, {{request.user}}!</p>
+            <img src="{% static './dj4all-logo-removebg-preview.png' %}" alt="logo" class="logo" onclick="refresh_home_page()">
         </div>
 
     {% else %}

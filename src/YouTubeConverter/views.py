@@ -42,7 +42,7 @@ def download_view(request):
         if(not check_path(path)):
             return HttpResponse(status=403)
         download_video(link, path)
-        return HttpResponse("Descarcat!")
+        return HttpResponse("Downloaded!")
         
     context = {
         'MUSIC_PATH': MUSIC_PATH
@@ -61,11 +61,13 @@ def show_directory(request):
         if(not check_path(path)):
             return HttpResponse(status=403)
         
-        directory_array = []
+        file_array = []
         for item in os.listdir(path):
             fullpath = os.path.join(path, item)
             if os.path.isdir(fullpath):
-                directory_array.append(item)
-        return HttpResponse(json.dumps(directory_array))
-    return HttpResponse("Salut")
+                file_array.append([item, True])
+            else:
+                file_array.append([item, False])
+        return HttpResponse(json.dumps(file_array))
+    return HttpResponse("Dj4All")
 
