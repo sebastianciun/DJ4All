@@ -4,7 +4,7 @@ body{
     font-family: 'Verdana';
      background: linear-gradient(90deg, #3d80dd, #038f5c);
     height: 120vh;
-    overflow: hidden;   
+    overflow: hidden; 
 }
 
 .message{

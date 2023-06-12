@@ -18,14 +18,13 @@ def check_path(path):
 def download_video(link, path):
     ydl_opts = {
         'format': 'mp3/bestaudio/best',
-        # ℹ️ See help(yt_dlp.postprocessor) for a list of available Postprocessors and their arguments
-        'postprocessors': [{  # Extract audio using ffmpeg
+        'postprocessors': [{  
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
         }],
         'quiet': True,
         'outtmpl': {
-            'default': path + '/%(title)s [%(id)s].%(ext)s'
+            'default': path + '/%(title)s.%(ext)s'
         },
         'noplaylist': True,
     }
@@ -52,11 +51,23 @@ def download_view(request):
 
 @csrf_exempt
 @unauthenticated_user
+def delete_song(request):
+    if (request.method == 'POST'):
+        path = request.POST.get('path')
+        if(not check_path(path)):
+            return HttpResponse(status=403)
+        if not os.path.isfile(path):
+            return HttpResponse(status=403)
+        os.remove(path)
+        return HttpResponse(status=200)
+    return HttpResponse(status=404)
+ 
+
+@csrf_exempt
+@unauthenticated_user
 def show_directory(request):
     if(request.method == 'POST'):
-        path = request.body
-        path = path.decode()
-        path = path[1:-1]
+        path = request.POST.get('path')
         
         if(not check_path(path)):
             return HttpResponse(status=403)
@@ -69,5 +80,5 @@ def show_directory(request):
             else:
                 file_array.append([item, False])
         return HttpResponse(json.dumps(file_array))
-    return HttpResponse("Dj4All")
+    return HttpResponse(status=404)
 

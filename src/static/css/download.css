@@ -3,9 +3,31 @@ body{
     padding: 0;
     font-family: 'Verdana';
     background: linear-gradient(90deg, #3d80dd, #038f5c);
-    min-height: 120vh;
+    min-height: auto;
     overflow: hidden;
+    height: 100vh;
+    overflow-y: auto  !important; 
 } 
+
+body::-webkit-scrollbar {
+    width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+    background: #d8d6d6; 
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #8b8a8a; 
+}
+
+/* body::-webkit-scrollbar-button{
+    background-color: #fff;
+} */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #525151; 
+}
 
 .container{
     display: flex;
@@ -25,7 +47,6 @@ body{
     min-width: 40% !important;
     max-width: 45%;
     position: relative;
-    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -88,7 +109,6 @@ body{
 }
 
 .song{
-    /* cursor: default;     */
     width: 100%;
     justify-content:start !important;
     white-space: nowrap;
@@ -96,16 +116,12 @@ body{
     text-overflow: ellipsis;
 }   
 
-/* .song:hover{
-    background: none;
-} */
-
 .song:focus{
-    background-color: #038f5c; /*#1c4e94;*/
+    background-color: #038f5c;
 }
 
 .song:active{
-    transform: scale(1);
+    transform: scale(0.96);
 }
 
 
@@ -117,11 +133,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 #download{
-    position: absolute;
+    position: fixed;
     top: 50%;
     text-align: center;
     width: 60%;
