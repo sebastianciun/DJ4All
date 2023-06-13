@@ -1,13 +1,15 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content_base_body %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/register.css'%}">
+<div class="container">
     <h1>Register</h1>
 
-    <form method="POST" action="">
+    <form method="POST" action="" id="data">
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" name="Create User">
+        <input type="submit" id="button" name="Create User">
     </form>
     {{form.errors}} 
+</div>
 {% endblock content_base_body %}

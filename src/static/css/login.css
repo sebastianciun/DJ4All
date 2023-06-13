@@ -110,3 +110,9 @@ input[type="SUBMIT"]:hover{
 input[type="SUBMIT"]:active{
     transform: scale(0.96);
 }
+
+h4{
+    border-top: 2px solid #adadad;
+    align-content: normal;
+    padding-bottom: 0;
+}

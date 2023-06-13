@@ -2,8 +2,6 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css'%}">
 
 <nav id="navbar">
-        <!--<ul><button><a href="{%url 'home' %}">Home</a></button></ul>
-        <br>!-->
         
         {% if request.user.is_authenticated %}
             <ul>
@@ -12,8 +10,5 @@
                 <li><a href="{% url 'logout' %}">Disconnect</a></li>
             </ul>
         {% else %}
-        <!--    <ul><button><a href="{% url 'login' %}">Login</a></button></ul>
-            <br>
-            <ul><button><a href="{% url 'register' %}">Register</a></button></ul>-->
         {% endif %}
 </nav>
